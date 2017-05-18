@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_slotmachine"
+    tools:context="com.fiap.filipe.slotmachine.MaquinaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llCabecalho"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="@color/backGround_splash">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fichas"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:id="@+id/tvFichas"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_do_jogador"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:id="@+id/tvNome"
+            android:layout_weight="0.5"
+            android:gravity="end"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llContainer"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_above="@+id/llRodape"
+        android:layout_below="@+id/llCabecalho"
+        android:layout_margin="16dp">
+
+        <ImageView
+            android:id="@+id/ivSlot1"
+            style="@style/icon_slot"
+            android:src="@drawable/bulbassaur"
+            android:background="@drawable/slot_background"/>
+
+        <ImageView
+            android:id="@+id/ivSlot2"
+            style="@style/icon_slot"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/charmander"
+            android:background="@drawable/slot_background"/>
+
+        <ImageView
+            android:id="@+id/ivSlot3"
+            style="@style/icon_slot"
+            android:src="@drawable/squirtle"
+            android:background="@drawable/slot_background"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llRodape"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/default_dp">
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fbutton:buttonColor="@color/button_color"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="#e67e22"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            android:text="@string/jogar"
+            android:textColor="@color/button_text_color"
+            android:onClick="jogar"
+            android:textStyle="bold"
+            android:id="@+id/btJogar"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

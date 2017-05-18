@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SlotMachine</string>
+    <string name="ash">Ash</string>
+    <string name="may">May</string>
+    <string name="seu_nome_aqui">Seu nome aqui</string>
+    <string name="numero_de_fichas">Numero de fichas</string>
+    <string name="jogar">JOGAR</string>
+    <string name="desenvolvido_por_filipe_pinato_aguiar">Desenvolvido por Filipe Pinato Aguiar</string>
+    <string name="fichas">Fichas</string>
+    <string name="nome_do_jogador">Nome do Jogador</string>
+    <string name="sobre">Sobre</string>
+    <string name="slotmachine_v1_0">SlotMachine v1.0</string>
+</resources>

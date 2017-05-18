@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_slotmachine"
+    tools:context="com.fiap.filipe.slotmachine.MenuActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pokemon_logo"
+        android:id="@+id/ivLogo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_above="@+id/tvDev"
+        android:layout_below="@+id/ivLogo">
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fbutton:buttonColor="@color/button_color"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="#e67e22"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            android:text="@string/jogar"
+            android:textColor="@color/button_text_color"
+            android:onClick="jogar"
+            android:textStyle="bold"
+            android:id="@+id/btJogar"
+            android:layout_marginBottom="@dimen/default_dp"
+            android:layout_marginRight="@dimen/default_dp"
+            android:layout_marginLeft="@dimen/default_dp"/>
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fbutton:buttonColor="@color/button_color"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="#e67e22"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            android:text="@string/sobre"
+            android:textColor="@color/button_text_color"
+            android:onClick="sobre"
+            android:textStyle="bold"
+            android:id="@+id/btSobre"
+            android:layout_marginRight="@dimen/default_dp"
+            android:layout_marginLeft="@dimen/default_dp"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desenvolvido_por_filipe_pinato_aguiar"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:id="@+id/tvDev"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

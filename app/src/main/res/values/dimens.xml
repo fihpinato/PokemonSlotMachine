@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_width">60dp</dimen>
+    <dimen name="logo_height">60dp</dimen>
+    <dimen name="margin_logo_login">30dp</dimen>
+    <dimen name="default_dp">10dp</dimen>
+</resources>
