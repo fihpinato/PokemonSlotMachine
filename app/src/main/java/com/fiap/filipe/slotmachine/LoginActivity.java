@@ -1,6 +1,7 @@
 package com.fiap.filipe.slotmachine;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checked;
     private int escolha;
 
+    private final String NOME = "nome";
+    private final String ESCOLHA = "escolha";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,20 @@ public class LoginActivity extends AppCompatActivity {
         etNome = (EditText) findViewById(R.id.etNome);
 
         spFichas = (Spinner) findViewById(R.id.spFichas);
+
+        if(savedInstanceState != null){
+            etNome.setText(savedInstanceState.getString(NOME));
+            escolha = savedInstanceState.getInt(ESCOLHA);
+
+            switch (escolha){
+                case 1:
+                    ivChar.setBackgroundResource(R.drawable.ash);
+                    break;
+                case 2:
+                    ivChar.setBackgroundResource(R.drawable.may);
+                    break;
+            }
+        }
     }
 
     public void changeImage(View v){
@@ -37,13 +55,20 @@ public class LoginActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.rbAsh:
                 if(checked)
-                    ivChar.setBackgroundResource(R.drawable.ash);
-                escolha = 1;
+                    escolha = 1;
                 break;
             case R.id.rbMay:
                 if(checked)
-                    ivChar.setBackgroundResource(R.drawable.may);
                     escolha = 2;
+                break;
+        }
+
+        switch (escolha){
+            case 1:
+                ivChar.setBackgroundResource(R.drawable.ash);
+                break;
+            case 2:
+                ivChar.setBackgroundResource(R.drawable.may);
                 break;
         }
     }
@@ -60,5 +85,12 @@ public class LoginActivity extends AppCompatActivity {
             i.putExtra("ESCOLHA",Integer.toString(escolha));
             startActivity(i);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(NOME, etNome.getText().toString());
+        outState.putInt(ESCOLHA, escolha);
     }
 }
