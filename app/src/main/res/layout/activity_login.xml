@@ -86,13 +86,9 @@
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="5dp"
         android:text="@string/jogar"
-        android:textColor="@color/button_text_color"
+        style="@style/fbutton_style"
         android:onClick="jogar"
-        android:textStyle="bold"
         android:id="@+id/btJogar"
-        android:layout_marginBottom="@dimen/default_dp"
-        android:layout_marginRight="@dimen/default_dp"
-        android:layout_marginLeft="@dimen/default_dp"
         android:layout_below="@+id/spFichas"/>
 
     <TextView

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import info.hoang8f.widget.FButton;
 
@@ -21,7 +23,7 @@ public class MaquinaActivity extends AppCompatActivity {
 
     private ImageView ivSlot1, ivSlot2, ivSlot3;
     private Roda slot1, slot2, slot3;
-    private TextView tvNome, tvFichas;
+    private TextView tvNome, tvFichas, tvMaquina, tvResultado;
     private FButton btJogar;
 
     private int numFichas;
@@ -34,6 +36,9 @@ public class MaquinaActivity extends AppCompatActivity {
 
     Context context = this;
     MediaPlayer mp;
+
+    Timer T = new Timer();
+    int segundo, minuto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +53,13 @@ public class MaquinaActivity extends AppCompatActivity {
 
         tvNome = (TextView) findViewById(R.id.tvNome);
         tvFichas = (TextView) findViewById(R.id.tvFichas);
+        tvMaquina = (TextView) findViewById(R.id.tvMaquina);
+        tvResultado = (TextView) findViewById(R.id.tvResultado);
 
         btJogar = (FButton) findViewById(R.id.btJogar);
 
         numFichas = Integer.parseInt(i.getStringExtra("FICHAS"));
-        tvFichas.setText("Fichas: " + Integer.toString(numFichas));
+        tvFichas.setText(getString(R.string.txt_fichas) + Integer.toString(numFichas));
 
         String nome = i.getStringExtra("NOME");
         int numEscolha = Integer.parseInt(i.getStringExtra("ESCOLHA"));
@@ -65,6 +72,29 @@ public class MaquinaActivity extends AppCompatActivity {
                 tvNome.setTextColor(Color.RED);
                 break;
         }
+
+        T.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        segundo++;
+                        if(segundo > 59){
+                            minuto++;
+                            segundo = 0;
+                        }
+                        if(segundo < 10 && minuto < 10){
+                            tvMaquina.setText("0" + minuto + ":" + "0" + segundo);
+                        } else if(segundo >= 10 && minuto < 10){
+                            tvMaquina.setText("0" + minuto + ":" + segundo);
+                        } else {
+                            tvMaquina.setText(minuto + ":" + segundo);
+                        }
+                    }
+                });
+            }
+        }, 1000, 1000);
     }
 
     public void jogar(View v){
@@ -89,14 +119,16 @@ public class MaquinaActivity extends AppCompatActivity {
             }, 3000);
             numFichas--;
         } else {
-            Toast.makeText(this, "Acabaram suas fichas!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.txt_aviso, Toast.LENGTH_SHORT).show();
         }
-        tvFichas.setText("Fichas: " + Integer.toString(numFichas));
+        tvFichas.setText(getString(R.string.txt_fichas) + Integer.toString(numFichas));
     }
 
     private void exibeResultado(){
         if(slot1.indiceAtual == slot2.indiceAtual && slot2.indiceAtual == slot3.indiceAtual){
-            Toast.makeText(this, "Você ganhou", Toast.LENGTH_SHORT).show();
+            tvResultado.setTextColor(Color.GREEN);
+            tvResultado.setText(R.string.txt_vitoria);
+            numFichas++;
             try {
                 if (mp.isPlaying()) {
                     mp.stop();
@@ -105,7 +137,8 @@ public class MaquinaActivity extends AppCompatActivity {
                 } mp.start();
             } catch(Exception e) { e.printStackTrace(); }
         } else if (slot1.indiceAtual == slot2.indiceAtual || slot2.indiceAtual == slot3.indiceAtual || slot1.indiceAtual == slot3.indiceAtual){
-            Toast.makeText(this, "Pequena Premiação", Toast.LENGTH_SHORT).show();
+            tvResultado.setTextColor(Color.BLUE);
+            tvResultado.setText(R.string.txt_empate);
             try {
                 if (mp.isPlaying()) {
                     mp.stop();
@@ -114,7 +147,8 @@ public class MaquinaActivity extends AppCompatActivity {
                 } mp.start();
             } catch(Exception e) { e.printStackTrace(); }
         } else {
-            Toast.makeText(this, "Você perdeu", Toast.LENGTH_SHORT).show();
+            tvResultado.setTextColor(Color.RED);
+            tvResultado.setText(R.string.txt_derrota);
             try {
                 if (mp.isPlaying()) {
                     mp.stop();

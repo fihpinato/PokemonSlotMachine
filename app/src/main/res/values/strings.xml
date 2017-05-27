@@ -10,4 +10,9 @@
     <string name="nome_do_jogador">Nome do Jogador</string>
     <string name="sobre">Sobre</string>
     <string name="slotmachine_v1_0">SlotMachine v1.0</string>
+    <string name="txt_fichas">Fichas:</string>
+    <string name="txt_vitoria">Parabéns! Você ganhou mais uma ficha!</string>
+    <string name="txt_empate">Quase, mas chegou perto!</string>
+    <string name="txt_derrota">Oh oh! Você perdeu</string>
+    <string name="txt_aviso">Acabaram suas fichas!</string>
 </resources>

@@ -31,13 +31,9 @@
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp"
             android:text="@string/jogar"
-            android:textColor="@color/button_text_color"
             android:onClick="jogar"
-            android:textStyle="bold"
             android:id="@+id/btJogar"
-            android:layout_marginBottom="@dimen/default_dp"
-            android:layout_marginRight="@dimen/default_dp"
-            android:layout_marginLeft="@dimen/default_dp"/>
+            style="@style/fbutton_style"/>
 
         <info.hoang8f.widget.FButton
             android:layout_width="match_parent"
@@ -48,12 +44,9 @@
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp"
             android:text="@string/sobre"
-            android:textColor="@color/button_text_color"
             android:onClick="sobre"
-            android:textStyle="bold"
             android:id="@+id/btSobre"
-            android:layout_marginRight="@dimen/default_dp"
-            android:layout_marginLeft="@dimen/default_dp"/>
+            style="@style/fbutton_style"/>
 
     </LinearLayout>
 
